@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { MovieDBLinks } from "@pages/Variables"
+import { MovieDBLinks } from "@/Variables"
 
 export function Movie({movie}: any) {
     return (

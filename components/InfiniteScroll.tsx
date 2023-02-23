@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { MovieDBLinks } from "@pages/Variables";
+import { MovieDBLinks } from "@/Variables";
 import { Movie } from "./Movie";
 
 export function InfiniteScroll() {

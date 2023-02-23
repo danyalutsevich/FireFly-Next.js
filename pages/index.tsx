@@ -1,4 +1,4 @@
-import { MovieDBLinks } from "./Variables"
+import { MovieDBLinks } from "../Variables"
 import { InfiniteScroll } from '@components/InfiniteScroll'
 import { Movie } from '@components/Movie'
 
