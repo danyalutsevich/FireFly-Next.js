@@ -19,7 +19,16 @@ export default function Home({popular}: any) {
   )
 }
 
-export const getServerSideProps = async () => {
+// export const getServerSideProps = async () => {
+//   const data = await fetch(MovieDBLinks.popular(1))
+//   const popular = await data.json()
+
+//   return {
+//     props: { popular },
+//   };
+// };
+
+export const getStaticProps = async () => {
   const data = await fetch(MovieDBLinks.popular(1))
   const popular = await data.json()
 
