@@ -4,8 +4,7 @@ import { Movie } from '@components/Movie'
 
 export default function Home({popular}: any) {
 
-  console.log(popular)
-
+ 
   return (<>
     <div className="flex align-middle justify-center bg-black">
       <div id="infiniteScroll" className="w-9/12 grid g-16 grid-cols-fluid align-middle justify-center">
@@ -19,16 +18,7 @@ export default function Home({popular}: any) {
   )
 }
 
-// export const getServerSideProps = async () => {
-//   const data = await fetch(MovieDBLinks.popular(1))
-//   const popular = await data.json()
-
-//   return {
-//     props: { popular },
-//   };
-// };
-
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const data = await fetch(MovieDBLinks.popular(1))
   const popular = await data.json()
 
@@ -36,3 +26,12 @@ export const getStaticProps = async () => {
     props: { popular },
   };
 };
+
+// export const getStaticProps = async () => {
+//   const data = await fetch(MovieDBLinks.popular(1))
+//   const popular = await data.json()
+
+//   return {
+//     props: { popular },
+//   };
+// };
