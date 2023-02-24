@@ -4,7 +4,7 @@ import { MovieDBLinks } from "@/Variables"
 
 export default function MovieHead(props: any) {
     const { movie } = props
-    
+
     const meta = `${movie?.title} смотреть онлайн watch online торрент скачать torrent download `
     const movieSchema = {
         "@context": "http://schema.org",
@@ -13,7 +13,7 @@ export default function MovieHead(props: any) {
         "description": meta + movie?.overview,
         "image": movie?.poster_path ? MovieDBLinks.image_original + movie?.poster_path : "https://fireflyratings.com/default_userpic.png",
         "url": "/movie/" + movie?.id,
-        "datePublished": movie?.release_date || movie?.first_air_date,
+        "datePublished": movie?.release_date,
         "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": movie?.vote_average,
@@ -25,9 +25,9 @@ export default function MovieHead(props: any) {
 
     return (
         <Head>
-            <Script type='application/ld+json' strategy='beforeInteractive'>
+            <script type='application/ld+json' >
                 {JSON.stringify(movieSchema)}
-            </Script>
+            </script>
             <title>{movie?.title}</title>
             <meta name="description" content={meta + movie?.overview} />
             <link rel="canonical" href={"/movie/" + movie.id} />
