@@ -20,7 +20,7 @@ export default function MovieHead(props: any) {
             "reviewCount": movie?.vote_count
         },
         "duration": movie?.runtime,
-        "genre": movie?.genres?.map((genre: any) => genre.name),
+        "genre": movie?.genres?.map((genre: any) => genre.name)
     }
 
     return (
