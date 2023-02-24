@@ -11,7 +11,8 @@ export default function Movie(props: any) {
     return (
         <>
             <MovieHead movie={movie} />
-            <div className="bg-black text-white h-screen">
+            <div className="bg-black text-white h-screen flex-col justify-center">
+                <img src={MovieDBLinks.image_original+movie.backdrop_path}/>
                 <h1>{movie.title}</h1>
                 <section>
 
