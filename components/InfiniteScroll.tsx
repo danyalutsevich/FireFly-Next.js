@@ -23,7 +23,7 @@ export function InfiniteScroll() {
     useEffect(() => {
         setPage(JSON.parse(sessionStorage.getItem("page") || "2")); // get cached page
         setMovies(JSON.parse(sessionStorage.getItem("movies") || "[]")); // get chached movies
-        setTimeout(() =>window.scrollTo(0, JSON.parse(sessionStorage.getItem("scrollHeight") || "0")), 100) // this is useless when you have a lot of movies 
+        // setTimeout(() => window.scrollTo(0, JSON.parse(sessionStorage.getItem("scrollHeight") || "0")), 100) // this is useless when you have a lot of movies 
     }, []);
 
     useEffect(() => {
@@ -44,15 +44,13 @@ export function InfiniteScroll() {
     }, [movies]);
 
     return (
-        <>
-            {/* Suspense allows you to render and in this case fetch images when you need them instead of all at once. 
-                 Images will be loaded as soon as they appear on your screen*/}
-            <Suspense >
-                {movies.map((movie: any, index: number) =>
-                    <Movie movie={movie} key={index + (page * 20)} />
-                )}
-            </Suspense>
-        </>
+        /* Suspense allows you to render and in this case fetch images when you need them instead of all at once. 
+             Images will be loaded as soon as they appear on your screen*/
+        <Suspense >
+            {movies.map((movie: any, index: number) =>
+                <Movie movie={movie} key={index + (page * 20)} />
+            )}
+        </Suspense>
     );
 }
 
