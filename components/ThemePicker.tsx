@@ -1,30 +1,31 @@
 "use client"
-import { useEffect, useState } from "react"
+import { useState, useEffect } from 'react';
 
 export function ThemePicker() {
-
-    const [theme, setTheme] = useState("dark")
+    const [isDarkMode, setIsDarkMode] = useState(false);
 
     useEffect(() => {
-        const storedTheme = localStorage.getItem("theme")
-        if (storedTheme) {
-            // setTheme(storedTheme)
-            document.documentElement.className = storedTheme
-            localStorage.setItem("theme", theme)
+        // Load theme from local storage, if available
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme === 'dark') {
+            setIsDarkMode(true);
         }
-        else{
-            document.documentElement.className = theme
-            localStorage.setItem("theme", theme)
-        }
-    }, [theme])
+    }, []);
+
+    useEffect(() => {
+        // Save theme to local storage
+        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        // Update body class to reflect current theme
+        document.documentElement.className = isDarkMode ? '' : 'dark';
+    }, [isDarkMode]);
+
+    function handleClick() {
+        setIsDarkMode(prev => !prev);
+    }
 
     return (
-        <>
-            {
-                theme === "light" ?
-                    <span className="material-symbols-outlined cursor-pointer" onClick={() => setTheme("dark")}>dark_mode</span> :
-                    <span className="material-symbols-outlined cursor-pointer" onClick={() => setTheme("light")}>light_mode</span>
-            }
-        </>
-    )
+        <span className="material-symbols-outlined cursor-pointer" onClick={handleClick}>{isDarkMode ? "dark_mode" : "light_mode"}</span>
+    );
 }
+
+

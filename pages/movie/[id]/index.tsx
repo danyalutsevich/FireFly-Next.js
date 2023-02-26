@@ -11,12 +11,12 @@ export default function Movie(movie: types.Movie) {
     return (
         <>
             <MovieHead movie={movie} />
-            <div className={"bg-black text-white h-fit flex flex-col items-center  " + font.className}>
+            <div className={"h-fit flex flex-col items-center  " + font.className}>
                 <div className="relative z-10 hidden sm:block">
                     <img className="w-[60vw] rounded-lg" src={MovieDBLinks.image_original + movie.backdrop_path} alt={`Highlight from ${movie?.title}`} />
-                    <div className="w-full h-full absolute top-0 bg-gradient-to-r from-black via-transparent"></div>
-                    <div className="w-full h-full absolute top-0 bg-gradient-to-l from-black via-transparent"></div>
-                    <div className="w-full h-full absolute top-0 bg-gradient-to-t from-black via-transparent"></div>
+                    <div className="w-full h-full absolute top-0 bg-gradient-to-r dark:from-black dark:via-transparent from-pink-200 via-transparent"></div>
+                    <div className="w-full h-full absolute top-0 bg-gradient-to-l dark:from-black dark:via-transparent from-pink-200 via-transparent"></div>
+                    <div className="w-full h-full absolute top-0 bg-gradient-to-t dark:from-black dark:via-transparent from-pink-200 via-transparent"></div>
                 </div>
                 <div className="grid grid-cols-3 gap-4 px-[20%]">
                     <div>

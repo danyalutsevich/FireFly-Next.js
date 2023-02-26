@@ -8,12 +8,13 @@ module.exports = {
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       gridTemplateColumns: {
         fluid: "repeat(auto-fit, minmax(15rem, 1fr))",
       },
-      boxShadow:{
+      boxShadow: {
         'custom': '0 0 80px 150px inset #000',
       }
     },

@@ -18,7 +18,7 @@ export function Movie({ movie }: any) {
                         width="200" height="200"
                         className='rounded m-5' />
                 </div>
-                <h1 className={"text-white text-center text-xl"}>{movie.title}</h1>
+                <h1 className={" text-center text-xl"}>{movie.title}</h1>
             </div>
         </Link>)
 }
