@@ -25,7 +25,6 @@ export default function Movie(movie: types.Movie) {
                             {movie?.imdb_id && <a className="underline" href={"https://www.imdb.com/title/" + movie?.imdb_id}>IMDB</a>}
                             {movie?.homepage && <a className="underline" href={movie?.homepage}>Homepage</a>}
                         </div>
-
                         <section className="flex space-x-3 flex-wrap">
                             <h1>Rating: </h1>
                             <p>{movie?.vote_average}</p>
@@ -65,10 +64,6 @@ export default function Movie(movie: types.Movie) {
                             <h1>Production Countries: </h1>
                             {movie?.production_countries?.map((country: types.ProductionCountry, index: number) => <p key={index}>{country.name}</p>)}
                         </section>
-
-
-
-
                     </div>
                     <div>
                     </div>

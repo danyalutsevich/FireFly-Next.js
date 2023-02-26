@@ -24,7 +24,7 @@ export function ThemePicker() {
     }
 
     return (
-        <span className="material-symbols-outlined cursor-pointer" onClick={handleClick}>{isDarkMode ? "dark_mode" : "light_mode"}</span>
+        <div className="material-symbols-outlined cursor-pointer text-4xl" onClick={handleClick}>{isDarkMode ? "dark_mode" : "light_mode"}</div>
     );
 }
 
