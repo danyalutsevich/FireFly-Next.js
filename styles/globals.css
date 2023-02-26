@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.programme {
+    font-family: 'Programme', sans-serif;
+}
+
+@font-face {
+    font-family: 'Programme';
+    src: url('/fonts/Programme/Programme-Regular.woff2') format('woff2'),
+        url('/fonts/Programme/Programme-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+
