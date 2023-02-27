@@ -28,7 +28,7 @@ export default function Movie(movie: types.Movie) {
                         <div className="md:ml-5">
                             <section className="flex space-x-3 flex-wrap">
                                 <h1>Rating: </h1>
-                                <p>{movie?.vote_average}</p>
+                                <p>{Math.floor(movie?.vote_average*10)/10}</p>
                             </section>
                             <section className="flex space-x-3 flex-wrap">
                                 <h1>Popularity: </h1>
