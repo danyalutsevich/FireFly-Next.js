@@ -1,13 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { MovieDBLinks } from "@/Variables"
+import { MovieDB } from "@/Links"
 
 export function Movie({ movie }: any) {
     return (
         <Link href={"/movie/" + movie.id}>
             <div className={"m-10 antialiased hover:scale-125 transition"}>
                 <div className="flex align-middle justify-center">
-                    <Image src={MovieDBLinks.image + movie.poster_path}
+                    <Image src={MovieDB.image + movie.poster_path}
                         alt={movie.title + " poster"}
                         width="200" height="200"
                         className='rounded m-5' />

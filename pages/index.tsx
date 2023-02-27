@@ -1,4 +1,4 @@
-import { MovieDBLinks } from "../Variables"
+import { MovieDB } from "../Links"
 import { InfiniteScroll } from '@components/InfiniteScroll'
 import { Movie } from '@components/Movie'
 import Head from 'next/head'
@@ -25,7 +25,7 @@ export default function Home({ popular }: any) {
 }
 
 export const getServerSideProps = async () => {
-  const data = await fetch(MovieDBLinks.popular(1))
+  const data = await fetch(MovieDB.popular(1))
   const popular = await data.json()
 
   return {

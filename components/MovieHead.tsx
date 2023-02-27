@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Script from 'next/script'
-import { MovieDBLinks } from "@/Variables"
+import { MovieDB } from "@/Links"
 
 export default function MovieHead(props: any) {
     const { movie } = props
@@ -11,7 +11,7 @@ export default function MovieHead(props: any) {
         "@type": "Movie",
         "name": movie?.title || movie?.name,
         "description": meta + movie?.overview,
-        "image": movie?.poster_path ? MovieDBLinks.image_original + movie?.poster_path : "https://fireflyratings.com/default_userpic.png",
+        "image": movie?.poster_path ? MovieDB.image_original + movie?.poster_path : "https://fireflyratings.com/default_userpic.png",
         "url": "/movie/" + movie?.id,
         "datePublished": movie?.release_date,
         "aggregateRating": {
@@ -33,7 +33,7 @@ export default function MovieHead(props: any) {
             <link rel="canonical" href={"/movie/" + movie.id} />
             <meta property="og:title" content={movie?.title} /> 
             <meta property="og:description" content={`${meta} ` + movie?.overview} />
-            <meta property="og:image" content={movie?.poster_path ? MovieDBLinks.image_original + movie?.poster_path : "https://fireflyratings.com/default_userpic.png"} />
+            <meta property="og:image" content={movie?.poster_path ? MovieDB.image_original + movie?.poster_path : "https://fireflyratings.com/default_userpic.png"} />
             <meta property="og:url" content={"/movie/" + movie?.id} />
             <meta property="og:type" content="website" />
             <meta property="og:site_name" content="Firefly" />
@@ -41,7 +41,7 @@ export default function MovieHead(props: any) {
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={movie?.title} />
             <meta name="twitter:description" content={`${meta} ` + movie?.overview} />
-            <meta name="twitter:image" content={movie?.poster_path ? MovieDBLinks.image_original + movie?.poster_path : "https://fireflyratings.com/default_userpic.png"} />
+            <meta name="twitter:image" content={movie?.poster_path ? MovieDB.image_original + movie?.poster_path : "https://fireflyratings.com/default_userpic.png"} />
         </Head>
     )
 }

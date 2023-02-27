@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, Suspense } from "react";
-import { MovieDBLinks } from "@/Variables";
+import { MovieDB } from "@/Links";
 import { Movie } from "./Movie";
 
 export function InfiniteScroll() {
@@ -12,7 +12,7 @@ export function InfiniteScroll() {
         // fetch additional movies
         setPage(page + 1);
         setIsLoading(true);
-        const response = await fetch(MovieDBLinks.popular(page));
+        const response = await fetch(MovieDB.popular(page));
         const moreData = await response.json();
         await setMovies([...movies, ...(moreData.results)]);
         sessionStorage.setItem("movies", JSON.stringify(movies))

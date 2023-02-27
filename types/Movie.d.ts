@@ -25,6 +25,7 @@ export interface Movie {
     video:                 boolean;
     vote_average:          number;
     vote_count:            number;
+    streams:               Stream[];
 }
 
 export interface Genre {
@@ -85,4 +86,25 @@ export enum Department {
     Sound = "Sound",
     VisualEffects = "Visual Effects",
     Writing = "Writing",
+}
+
+export interface Stream {
+    name:          Name;
+    title:         string;
+    infoHash:      string;
+    fileIdx:       number;
+    behaviorHints: BehaviorHints;
+    sources?:      Array<null | string>;
+}
+
+export interface BehaviorHints {
+    bingeGroup: string;
+}
+
+export enum Name {
+    Torrentio720P = "Torrentio\n720p",
+    TorrentioCAM = "Torrentio\nCAM",
+    TorrentioSCR = "Torrentio\nSCR",
+    TorrentioTeleCine = "Torrentio\nTeleCine",
+    TorrentioTeleSync = "Torrentio\nTeleSync",
 }
