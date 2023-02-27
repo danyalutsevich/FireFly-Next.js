@@ -8,8 +8,9 @@
 
 @font-face {
     font-family: 'Programme';
-    src: url('/fonts/Programme/Programme-Regular.woff2') format('woff2'),
-        url('/fonts/Programme/Programme-Regular.woff') format('woff');
+    src: url('/fonts/Programme-Regular.woff2') format('woff2'),
+        url('/fonts/Programme-Regular.ttf') format('truetype'),
+        url('/fonts/Programme-Regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;
 }
@@ -48,6 +49,6 @@
 }
 
 /* Hide scrollbar for Firefox */
-/* * {
+* {
     scrollbar-width: none;
-} */
+}
