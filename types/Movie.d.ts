@@ -25,7 +25,7 @@ export interface Movie {
     video:                 boolean;
     vote_average:          number;
     vote_count:            number;
-    streams:               Stream[];
+    streams:               any;
 }
 
 export interface Genre {
