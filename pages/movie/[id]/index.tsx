@@ -12,12 +12,13 @@ export default function Movie(movie: types.Movie) {
             <MovieHead movie={movie} />
             <div className={"h-fit flex flex-col items-center "}>
                 <div className="relative z-10 hidden sm:block ">
-                    <img className="w-[60vw] rounded-lg" src={MovieDB.image_original + movie.backdrop_path} alt={`Highlight from ${movie?.title}`} />
+                    {movie.backdrop_path ? <img className="w-[60vw] rounded-lg" src={MovieDB.image_original + movie.backdrop_path} alt={`Highlight from ${movie?.title}`} /> :
+                        <div className="h-28"></div>}
                     <div className="w-full h-full absolute top-0 bg-gradient-to-r dark:from-black dark:via-transparent from-pink-200 via-transparent"></div>
                     <div className="w-full h-full absolute top-0 bg-gradient-to-l dark:from-black dark:via-transparent from-pink-200 via-transparent"></div>
                     <div className="w-full h-full absolute top-0 bg-gradient-to-t dark:from-black dark:via-transparent from-pink-200 via-transparent"></div>
                 </div>
-                <div className="md:grid md:grid-cols-3 md:gap-4 md:mx-[15%] md:items-start mx-7 flex flex-wrap flex-col align-middle items-center">
+                <div className="md:grid md:grid-cols-3 md:gap-4 md:mx-[15%] md:items-start mx-7 flex flex-wrap flex-col align-middle items-start">
                     <div className="flex flex-col">
                         <img className="w-full p-5 rounded-3xl self-center" src={MovieDB.image_original + movie.poster_path} alt={`Highlight from ${movie?.title}`} />
                         <h1 className="text-3xl my-3 md:hidden items-baseline flex flex-wrap">{movie?.title} <p className="text-xs m-4 whitespace-nowrap">{movie?.release_date}</p></h1>
@@ -95,7 +96,7 @@ export default function Movie(movie: types.Movie) {
                         <h1 className="text-3xl my-3">Streams</h1>
                         <p className="my-3">Download <a className="underline" href="https://www.utorrent.com/web/" target={"_blank"}>webtorrnet</a> app to watch movie instantly</p>
                         <div className="flex flex-wrap  overflow-y-scroll">
-                            {movie?.streams?.map((stream: types.Stream, index: number) => {
+                            {movie?.streams?.length ? movie?.streams?.map((stream: types.Stream, index: number) => {
 
                                 let [title, info] = stream.title.split("\n")
                                 return (
@@ -135,7 +136,7 @@ export default function Movie(movie: types.Movie) {
                                         </a>
                                     </section>)
                             }
-                            )}
+                        ) : <p className="text-xlZAqa">No streams found</p>}
                         </div>
                     </section>
                 </div>

@@ -6,6 +6,7 @@ import { ThemePicker } from './ThemePicker';
 export function HeaderDropDown() {
     const [isOpen, setIsOpen] = useState(false);
 
+
     return (
         <div>
             <button className='material-symbols-outlined w-full text-5xl' onClick={() => setIsOpen(!isOpen)}>
