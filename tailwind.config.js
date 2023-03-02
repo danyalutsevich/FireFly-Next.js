@@ -12,7 +12,7 @@ module.exports = {
   theme: {
     extend: {
       gridTemplateColumns: {
-        fluid: "repeat(auto-fit, minmax(15rem, 1fr))",
+        fluid: "repeat(auto-fit, minmax(13rem, 1fr))",
       },
       boxShadow: {
         'custom': '0 0 80px 150px inset #000',
