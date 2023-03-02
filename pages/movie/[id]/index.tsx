@@ -1,5 +1,5 @@
 import { MovieDB, TorrentIo } from "@/Links"
-import { useRouter } from 'next/router'
+import Image from 'next/image'
 
 import MovieHead from '@components/MovieHead'
 import * as types from "@/types/Movie"
@@ -41,11 +41,11 @@ export default function Movie(movie: types.Movie) {
                             </section>
                             <section className="flex space-x-3 flex-wrap">
                                 <h1>Budget: </h1>
-                                <p>${movie?.budget}</p>
+                                <p>{movie?.budget ? "$" + movie?.budget : "unknown"}</p>
                             </section>
                             <section className="flex space-x-3 flex-wrap">
                                 <h1>Revenue: </h1>
-                                <p>${movie?.revenue}</p>
+                                <p>{movie?.revenue ? "$" + movie?.revenue : "unknown"}</p>
                             </section>
                         </div>
                     </div>
@@ -53,17 +53,46 @@ export default function Movie(movie: types.Movie) {
                         <h1 className="text-5xl my-3 hidden md:flex items-baseline align-baseline">{movie?.title} <p className="text-sm m-4 whitespace-nowrap">{movie?.release_date}</p></h1>
                         <p className="my-3">{movie?.tagline}</p>
                         <p>{movie?.overview}</p>
-                        <section className="flex flex-wrap space-x-3 align-middle items-center">
+                        <section className="flex flex-wrap space-x-2 align-middle items-center">
                             <h1>Genres: </h1>
                             {movie?.genres?.map((genre: types.Genre, index: number) => <p className=" bg-purple-300 dark:bg-zinc-800 rounded p-1 m-1" key={index}>{genre.name}</p>)}
                         </section>
-                        <section className="flex flex-wrap space-x-3 align-middle items-center">
+                        <section className="flex flex-wrap space-x-2 align-middle items-center">
                             <h1>Companies: </h1>
                             {movie?.production_companies?.map((company: types.ProductionCompany, index: number) => <p className=" bg-purple-300 dark:bg-zinc-800 rounded p-1 m-1" key={index}>{company.name}</p>)}
                         </section>
-                        <section className="flex flex-wrap space-x-3 align-middle items-center">
+                        <section className="flex flex-wrap space-x-2 align-middle items-center">
                             <h1>Countries: </h1>
                             {movie?.production_countries?.map((country: types.ProductionCountry, index: number) => <p className=" bg-purple-300 dark:bg-zinc-800 rounded p-1 m-1" key={index}>{country.name}</p>)}
+                        </section>
+                        <section className="align-middle items-center">
+                            <h1 className="text-3xl my-3">Images</h1>
+                            <div className="flex flex-wrap overflow-y-scroll max-h-96">
+                                {
+                                    movie?.images?.backdrops?.map((image: types.Image, index: number) => {
+                                        return (
+                                            <Image className="rounded-md mr-2 mb-2 h-20 w-auto"
+                                                key={index}
+                                                src={MovieDB.image_original + image.file_path}
+                                                alt={`Highlight from ${movie?.title}`}
+                                                width={image.width}
+                                                height={image.height} />
+                                        )
+                                    })}
+                                {
+                                    movie?.images?.posters?.map((image: types.Image, index: number) => {
+                                        return (
+                                            <Image className="rounded-md mr-2 mb-2 h-20 w-auto"
+                                                key={index}
+                                                src={MovieDB.image_original + image.file_path}
+                                                alt={`Highlight from ${movie?.title}`}
+                                                width={image.width}
+                                                height={image.height} />
+                                        )
+                                    })
+                                }
+                            </div>
+
                         </section>
                     </div>
                     <section className="col-span-3 text-sm">
@@ -136,7 +165,7 @@ export default function Movie(movie: types.Movie) {
                                         </a>
                                     </section>)
                             }
-                        ) : <p className="text-xlZAqa">No streams found</p>}
+                            ) : <p className="text-xlZAqa">No streams found</p>}
                         </div>
                     </section>
                 </div>
@@ -156,11 +185,13 @@ export const getServerSideProps = async (context: any) => {
     const credits: types.Credits = await data.json()
     movie.credits = credits
 
+    data = await fetch(MovieDB.images(params.id, "movie"))
+    const images: types.Images = await data.json()
+    movie.images = images
+
     data = await fetch(TorrentIo.byImbdId(movie.imdb_id))
     const streams = await data.json()
     movie.streams = streams.streams
-
-    console.log(JSON.stringify(streams))
 
     return {
         props: movie
