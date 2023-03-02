@@ -1,6 +1,6 @@
 import { MovieDB, TorrentIo } from "@/Links"
 import Image from 'next/image'
-
+import { Images } from "@/components/Images"
 import MovieHead from '@components/MovieHead'
 import * as types from "@/types/Movie"
 
@@ -65,37 +65,14 @@ export default function Movie(movie: types.Movie) {
                             <h1>Countries: </h1>
                             {movie?.production_countries?.map((country: types.ProductionCountry, index: number) => <p className=" bg-purple-300 dark:bg-zinc-800 rounded p-1 m-1" key={index}>{country.name}</p>)}
                         </section>
-                        <section className="align-middle items-center">
+                        <section className="align-middle items-center relative h-96 mb-20">
                             <h1 className="text-3xl my-3">Images</h1>
-                            <div className="flex flex-wrap overflow-y-scroll max-h-96">
-                                {
-                                    movie?.images?.backdrops?.map((image: types.Image, index: number) => {
-                                        return (
-                                            <Image className="rounded-md mr-2 mb-2 h-20 w-auto"
-                                                key={index}
-                                                src={MovieDB.image_original + image.file_path}
-                                                alt={`Highlight from ${movie?.title}`}
-                                                width={image.width}
-                                                height={image.height} />
-                                        )
-                                    })}
-                                {
-                                    movie?.images?.posters?.map((image: types.Image, index: number) => {
-                                        return (
-                                            <Image className="rounded-md mr-2 mb-2 h-20 w-auto"
-                                                key={index}
-                                                src={MovieDB.image_original + image.file_path}
-                                                alt={`Highlight from ${movie?.title}`}
-                                                width={image.width}
-                                                height={image.height} />
-                                        )
-                                    })
-                                }
+                            <div className="flex flex-wrap overflow-y-scroll h-96 absolute z-[60]">
+                                <Images images={movie?.images} movie={movie} />
                             </div>
-
                         </section>
                     </div>
-                    <section className="col-span-3 text-sm">
+                    <section className="col-span-3 text-sm mt-10">
                         <h1 className="text-3xl my-3">Cast</h1>
                         <div className="flex flex-wrap max-h-96 overflow-y-scroll">
                             {movie?.credits?.cast?.map((cast: types.Cast, index: number) => {
@@ -165,7 +142,7 @@ export default function Movie(movie: types.Movie) {
                                         </a>
                                     </section>)
                             }
-                            ) : <p className="text-xlZAqa">No streams found</p>}
+                            ) : <p className="text-sm">No streams found</p>}
                         </div>
                     </section>
                 </div>
