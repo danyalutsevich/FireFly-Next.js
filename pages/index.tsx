@@ -1,12 +1,12 @@
 import { MovieDB } from "../Links"
-import { InfiniteScroll } from '@components/InfiniteScroll'
+// import { InfiniteScroll } from '@components/InfiniteScroll'
 import { Movie } from '@components/Movie'
 import Head from 'next/head'
 import dynamic from "next/dynamic";
 
-// const InfiniteScroll = dynamic(() => import("../components/InfiniteScroll")
-//   .then(mod => mod.InfiniteScroll),
-//   { ssr: false });
+const InfiniteScroll = dynamic(() => import("../components/InfiniteScroll")
+  .then(mod => mod.InfiniteScroll),
+  { ssr: false });
 
 export default function Home({ popular }: any) {
 
