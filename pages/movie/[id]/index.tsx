@@ -21,7 +21,7 @@ export default function Movie(movie: types.Movie) {
                 <div className="md:grid md:grid-cols-3 md:gap-4 md:mx-[15%] md:items-start mx-7 flex flex-wrap flex-col align-middle items-start">
                     <div className="flex flex-col">
                         <img className="w-full p-5 rounded-3xl self-center" src={MovieDB.image_original + movie.poster_path} alt={`Highlight from ${movie?.title}`} />
-                        <h1 className="text-3xl my-3 md:hidden items-baseline flex flex-wrap">{movie?.title} <p className="text-xs m-4 whitespace-nowrap">{movie?.release_date}</p></h1>
+                        <h1 className="text-3xl my-3 md:hidden items-baseline inline">{movie?.title} <p className="text-xs m-4 whitespace-nowrap inline">{movie?.release_date}</p></h1>
                         <div className="space-x-3 flex flex-wrap md:ml-5">
                             {movie?.imdb_id && <a className="underline" href={"https://www.imdb.com/title/" + movie?.imdb_id}>IMDB</a>}
                             {movie?.homepage && <a className="underline" href={movie?.homepage}>Homepage</a>}
@@ -51,8 +51,8 @@ export default function Movie(movie: types.Movie) {
                     </div>
                     <div className="col-span-2 space-y-2">
                         <h1 className="text-5xl my-3 hidden md:flex items-baseline align-baseline">{movie?.title} <p className="text-sm m-4 whitespace-nowrap">{movie?.release_date}</p></h1>
-                        <p className="my-3">{movie?.tagline}</p>
-                        <p>{movie?.overview}</p>
+                        <p className="my-3 text-xl">{movie?.tagline}</p>
+                        <p className="">{movie?.overview}</p>
                         <section className="flex flex-wrap space-x-2 align-middle items-center">
                             <h1>Genres: </h1>
                             {movie?.genres?.map((genre: types.Genre, index: number) => <p className=" bg-purple-300 dark:bg-zinc-800 rounded p-1 m-1" key={index}>{genre.name}</p>)}
@@ -92,7 +92,7 @@ export default function Movie(movie: types.Movie) {
                                 return (
                                     <section key={index} className="flex flex-col  bg-purple-300 dark:bg-zinc-800 rounded mr-2 mb-2 p-2">
                                         <h1>{cast.name}</h1>
-                                        <p>{cast.job}</p>
+                                        <p className="text-xs">{cast.job}</p>
                                     </section>
                                 )
                             })}
@@ -103,7 +103,6 @@ export default function Movie(movie: types.Movie) {
                         <p className="my-3">Download <a className="underline" href="https://www.utorrent.com/web/" target={"_blank"}>webtorrnet</a> app to watch movie instantly</p>
                         <div className="flex flex-wrap  overflow-y-scroll">
                             {movie?.streams?.length ? movie?.streams?.map((stream: types.Stream, index: number) => {
-
                                 let [title, info] = stream.title.split("\n")
                                 return (
                                     <section key={index} className="flex flex-col hover:brightness-75 bg-purple-300 dark:bg-zinc-800 rounded mr-2 mb-2 p-2">
@@ -128,11 +127,11 @@ export default function Movie(movie: types.Movie) {
                                                 .replaceAll("DVDRIP", " ")
                                                 .replaceAll("H264", " ")
                                                 .replaceAll("10 bit", " ")
+                                                .replaceAll("10bit", " ")
                                                 .replaceAll("AAC", " ")
                                                 .replaceAll("DTS", " ")
                                                 .replaceAll("HEVC", " ")
                                                 .replaceAll("  ", " ")
-
                                             }
                                             {info && <p>{info
                                                 .replaceAll("👤", "Peers: ")
@@ -141,8 +140,7 @@ export default function Movie(movie: types.Movie) {
                                             }</p>}
                                         </a>
                                     </section>)
-                            }
-                            ) : <p className="text-sm">No streams found</p>}
+                            }) : <p className="text-sm">No streams found</p>}
                         </div>
                     </section>
                 </div>

@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 
 export function ThemePicker() {
-    const [isDarkMode, setIsDarkMode] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(true);
 
     useEffect(() => {
         // Load theme from local storage, if available

@@ -1,5 +1,4 @@
 import { MovieDB } from "../Links"
-// import { InfiniteScroll } from '@components/InfiniteScroll'
 import { Movie } from '@components/Movie'
 import Head from 'next/head'
 import dynamic from "next/dynamic";
