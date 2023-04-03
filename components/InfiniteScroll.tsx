@@ -10,7 +10,7 @@ export function InfiniteScroll() {
     const [page, setPage] = useState(2);
 
     // fetch additional movies
-    const fetchMoreMovies = async (page: number) => {
+    async function fetchMoreMovies(page: number) {
         try {
             setIsLoading(true);
             const response = await fetch(MovieDB.popular(page));

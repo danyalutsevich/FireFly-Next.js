@@ -28,7 +28,7 @@ export function Images(props: any) {
             {
                 images?.backdrops?.map((image: types.Image, index: number) => {
                     return (
-                        <Image className="rounded-md mr-2 mb-2 h-20 w-auto cursor-pointer"
+                        <Image className="rounded-md mr-2 mb-2 h-20 w-auto cursor-pointer transition hover:scale-110"
                             key={index}
                             src={MovieDB.image_original + image.file_path}
                             alt={`Highlight from ${movie?.title}`}
@@ -40,7 +40,7 @@ export function Images(props: any) {
             {
                 images?.posters?.map((image: types.Image, index: number) => {
                     return (
-                        <Image className="rounded-md mr-2 mb-2 h-20 w-auto cursor-pointer"
+                        <Image className="rounded-md mr-2 mb-2 h-20 w-auto cursor-pointer transition hover:scale-110"
                             key={index}
                             src={MovieDB.image_original + image.file_path}
                             alt={`Highlight from ${movie?.title}`}
