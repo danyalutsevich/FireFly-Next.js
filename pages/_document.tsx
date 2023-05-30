@@ -6,7 +6,8 @@ export default function Document() {
     <Html lang="en" className='dark'>
       <Head >
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-        <script src="https://chatgpt-coderfy.sg.aista.com/magic/system/openai/include-javascript?markdown=true&speech=false&search=false&chat=true&css=coderfy&file=default&type=firefly_vercel_app&header=%3Cdiv%20style=%22color:pink%22%3Etest%3C/div%3E&button=%3Ca%20herf=%22https://google.com%22%3Etest%3C/a%3E" defer></script>
+        <script src="https://chatgpt-coderfy.sg.aista.com/magic/system/openai/include-javascript?markdown=true&speech=false&search=false&chat=true&css=stxxyle1&file=default&type=https://www_lin115_com/&header=style1&button=foo1" defer > </script>
+
         <script dangerouslySetInnerHTML={{
           __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
